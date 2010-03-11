@@ -23,7 +23,7 @@
 class Snaptic {
     var $username = '';
     var $password = '';
-    var $endpoint = 'https://snaptic.com/v1/notes.json';
+    var $endpoint = 'https://api.snaptic.com/v1/notes.json';
 
     public function __construct($username = null, $password = null) {
         $this->username = $username;
