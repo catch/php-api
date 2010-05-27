@@ -37,7 +37,7 @@ class Snaptic {
     }
 
     public function postNote($text) {
-        $result = $this->postBasicAuth(array("text"=>"$text"));
+        $result = $this->postBasicAuth("text=" . urlencode($text));
         return $result;
     }
 
@@ -54,7 +54,7 @@ class Snaptic {
         return $data;
     }
 
-    private function postBasicAuth($data=array()) {
+    private function postBasicAuth($data) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->endpoint);
         curl_setopt($ch, CURLOPT_USERPWD, "$this->username:$this->password");
