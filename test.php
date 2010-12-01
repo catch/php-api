@@ -23,15 +23,20 @@
 require_once('snaptic.php');
 
 $snaptic = new Snaptic('username', 'password');
+
 $notes = $snaptic->getNotes();
 
 foreach ($notes->notes as $note) {
-	print $note->created_at;
-	print $note->tag;
+	print $note->created_at . " ";
+	print $note->id . "\n";
 }
 
 $myfirstnote = "my first note!! hello #world!!";
 
-print $snaptic->postNote($myfirstnote);
+$data = $snaptic->postNote($myfirstnote);
+print $data;
 
+$data_r = json_decode($data);
+
+$snaptic->deleteNote($data_r->notes['0']->id);
 ?>

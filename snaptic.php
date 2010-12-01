@@ -41,6 +41,11 @@ class Snaptic {
         return $result;
     }
 
+	public function deleteNote($id) {
+		$result = $this->deleteBasicAuth($id);
+		return $result;
+	}
+
     /* HTTP GET a URL with basic auth */
     private function getBasicAuth() {
         $ch = curl_init();
@@ -61,15 +66,29 @@ class Snaptic {
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        /* work around lighttpd bug http://redmine.lighttpd.net/issues/1017 */
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		
+		/* work around lighttpd bug http://redmine.lighttpd.net/issues/1017 */
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Expect:"));
         $data = curl_exec($ch);
         curl_close($ch);
 
         return $data;
     }
+	
+	private function deleteBasicAuth($id) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "https://api.catch.com/v1/notes/" . $id);
+		curl_setopt($ch, CURLOPT_USERPWD, "$this->username:$this->password");
+		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 
+		$data = curl_exec($ch);
+		curl_close($ch);
+
+		return $data;
+	}
 }
 
 
