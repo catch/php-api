@@ -50,7 +50,7 @@ class Snaptic {
     private function getBasicAuth() {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->endpoint);
-        curl_setopt($ch, CURLOPT_USERPWD, "$this->username:$this->password");
+        curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $data = curl_exec($ch);
@@ -62,7 +62,7 @@ class Snaptic {
     private function postBasicAuth($data) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->endpoint);
-        curl_setopt($ch, CURLOPT_USERPWD, "$this->username:$this->password");
+        curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, TRUE);
@@ -79,7 +79,7 @@ class Snaptic {
 	private function deleteBasicAuth($id) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://api.catch.com/v1/notes/" . $id);
-		curl_setopt($ch, CURLOPT_USERPWD, "$this->username:$this->password");
+		curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);
 		curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
