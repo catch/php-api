@@ -66,7 +66,7 @@ class Snaptic {
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, TRUE);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 		
 		/* work around lighttpd bug http://redmine.lighttpd.net/issues/1017 */
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Expect:"));
