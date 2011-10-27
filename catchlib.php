@@ -22,7 +22,7 @@
  *
  */
 
-class Catchcom {
+class CatchLib {
     var $username = '';
     var $password = '';
     var $endpoint = 'https://api.catch.com/v2/notes.json';
