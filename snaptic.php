@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2010 Snaptic, Inc
+ * Copyright (c) 2011 Catch.com, Inc.
  *
  * Permission to use, copy, modify, and distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,16 +14,18 @@
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  *
- * http://snaptic.com PHP library
+ * http://catch.com PHP library
  * Requires a PHP compiled with CURL and JSON (default after 5.2.0)
  *
- * By Niall O'Higgins <niallo@snaptic.com> 2010-03-10
+ * Currently uses basic auth but is inefficient; should use bearer token
+ * instead
+ *
  */
 
-class Snaptic {
+class Catchcom {
     var $username = '';
     var $password = '';
-    var $endpoint = 'https://api.snaptic.com/v1/notes.json';
+    var $endpoint = 'https://api.catch.com/v2/notes.json';
 
     public function __construct($username = null, $password = null) {
         $this->username = $username;
@@ -71,6 +73,5 @@ class Snaptic {
     }
 
 }
-
 
 ?>
